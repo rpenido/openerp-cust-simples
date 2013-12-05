@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_partner_form_colour">
+			<field name="name">res.partner.form.colour</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="account.view_partner_property_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/group/group[1]" position="inside">
+					<field name="visit_order" />
+					<field name="orders_last_week" />
+					<field name="paym_term" />
+				</xpath>
+				<xpath expr="/form/sheet/notebook/page[@string='Contacts']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+				<field name="name" position="after">
+					<field name="code" />
+				</field>
+				<xpath expr="/form/sheet/notebook/page[@string='Internal Notes']" position="after">
+					<page string="Historico">
+						<field name="history" />
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>
+			
