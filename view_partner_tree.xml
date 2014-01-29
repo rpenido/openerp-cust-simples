@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
         <data>
+		<record model="ir.ui.view" id="view_l10n_br_base_partner_filter_simples">
+                        <field name="name">l10n_br_base.partner.filter.simples</field>
+                        <field name="model">res.partner</field>
+                        <field name="inherit_id" ref="l10n_br_base.view_l10n_br_base_partner_filter" />
+                        <field name="arch" type="xml">
+                                <field name="name" position="before">
+                                        <field name="code" />
+                                </field>
+                        </field>
+                </record>
+
+
 		<record id="view_partner_tree_simples" model="ir.ui.view">
 			<field name="name">res.partner.tree</field>
 			<field name="model">res.partner</field>
