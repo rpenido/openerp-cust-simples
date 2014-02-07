@@ -1,0 +1,47 @@
+<openerp>
+	<data>
+		<record model='ir.actions.act_window' id='nf_series_report_action'>
+		        <field name="name">Série 1 /  P10</field>
+		        <field name="res_model">nf_series.report</field>
+		        <field name="view_type">tree</field>
+		        <field name="view_mode">list</field>
+		        <field name="context">{}</field>
+			<field name="view_id" ref="nf_series_report_view"/>  
+			<field name="search_view_id" ref="nf_series_report_filter"/>
+		</record>
+
+		<menuitem id="main_menu" name="Conciliação"/>
+                <menuitem id="Notas" parent="main_menu" />
+                <menuitem id="real_menu" parent="Notas" action="nf_series_report_action"/>
+
+		<record id="nf_series_report_filter" model="ir.ui.view">
+			<field name="name">nf_series.report.filter</field>
+			<field name="model">nf_series.report</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="produto" />
+                                        <group expand="0" string="Group By...">
+                                                <filter string="Série" domain="[]" context="{'group_by':'serie'}"/>
+						<filter string="Produto" domain="[]" context="{'group_by':'produto'}"/>
+                                        </group>
+                                </search>
+			</field>
+		</record>
+
+		<record id="nf_series_report_view" model="ir.ui.view">
+        		<field name="name">Relatorio de Produtos por Serie</field>
+        		<field name="model">nf_series.report</field>
+			<field name="type">tree</field>
+			 <field name="field_parent">series</field>
+			<field name="arch" type="xml">
+				<tree string="Series" >
+	        	    		<field name="serie" />
+					<field name="codigo" />
+					<field name="produto" />
+					<field name="quantidade" />
+				</tree>
+			</field>
+		</record>
+	</data>
+</openerp>
