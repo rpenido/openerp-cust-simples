@@ -35,7 +35,7 @@ class nf_series_report(osv.osv):
 			i.id = il.invoice_id
 			and pp.id = il.product_id
 			and se.id = i.document_serie_id
-			and i.state in ('sefaz_export', 'paid')
+			and i.state in ('sefaz_export', 'paid', 'done')
 		
 		union
 		
