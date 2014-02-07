@@ -1,1 +1,3 @@
 import res_partner
+import nf_series_report
+import purchase_order
