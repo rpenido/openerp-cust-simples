@@ -22,6 +22,7 @@ class nf_series_report(osv.osv):
 		sum(qtd) as quantidade
 	from
 		(select
+			il.id,
 			se.code as serie,
 			pp.default_code as codigo,
 			pp.name_template as produto,
@@ -40,6 +41,7 @@ class nf_series_report(osv.osv):
 		union
 		
 		select
+			sm.id,
 			po.serie as serie,
 			pp.default_code as codigo,
 			pp.name_template as produto,
