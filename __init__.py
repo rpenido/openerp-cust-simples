@@ -1,4 +1,4 @@
 import res_partner
 import purchase_order
 import nf_series_report
-import account_invoice
+import sales
