@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+                <record id="view_l10n_br_simples_account_invoice_filter" model="ir.ui.view">
+                        <field name="name">cust_simples.invoice.select</field>
+                        <field name="model">account.invoice</field>
+                        <field name="inherit_id" ref="l10n_br_account.view_l10n_br_account_invoice_filter" />
+                        <field name="arch" type="xml">
+                                <field name="partner_id" position="before">
+					<field name="partner_legal_name" string="Clienteabc"/>
+                                </field>
+                        </field>
+                </record>
+	</data>
+</openerp>

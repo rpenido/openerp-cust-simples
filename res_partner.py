@@ -26,7 +26,7 @@ class res_partner(osv.osv):
 		records = self.browse(cr, uid, ids)
 		result = {}
 		for r in records:
-			orders_ids = self.pool.get('sale.order').search(cr, uid, [('partner_id', '=', r.id), ('date_order', '>=', today.isoformat())], context=context)
+			orders_ids = self.pool.get('sale.order').search(cr, uid, [('partner_id', '=', r.id), ('state', 'not in', ('draft','cancel') ), ('date_order', '>=', today.isoformat())], context=context)
 			result[r.id] = 0;
 			order_list = self.pool.get('sale.order').browse(cr, uid, orders_ids)
 			for so in order_list:
@@ -38,7 +38,7 @@ class res_partner(osv.osv):
 		records = self.browse(cr, uid, ids)
 		result = {}
 		for r in records:
-			orders_ids = self.pool.get('sale.order').search(cr, uid, [('partner_id', '=', r.id), ('date_order', '>=', ref_date.isoformat())], context=context)
+			orders_ids = self.pool.get('sale.order').search(cr, uid, [('partner_id', '=', r.id), ('state', 'not in', ('draft','cancel') ), ('date_order', '>=', ref_date.isoformat())], context=context)
 			result[r.id] = 0;
 			order_list = self.pool.get('sale.order').browse(cr, uid, orders_ids)
 			for so in order_list:
