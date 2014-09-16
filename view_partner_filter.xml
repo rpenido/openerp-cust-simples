@@ -9,6 +9,7 @@
 				<field name="cnpj_cpf" position="replace" />
 				<field name="category_id" position="replace" />
 				<field name="name" position="after">
+					<field name="code" />
 					<field name="legal_name" />
 				</field>
 			</field>
