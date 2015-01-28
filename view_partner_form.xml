@@ -8,7 +8,6 @@
 			<field name="arch" type="xml">
 				<xpath expr="/form/sheet/group/group[1]" position="inside">
 					<field name="visit_order" />
-					<field name="orders_last_week" />
 					<field name="paym_term" />
 				</xpath>
 				<xpath expr="/form/sheet/notebook/page[@string='Contacts']" position="attributes">
