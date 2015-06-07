@@ -9,6 +9,7 @@
 				<xpath expr="/form/sheet/group/group[1]" position="inside">
 					<field name="visit_order" />
 					<field name="paym_term" />
+					<field name="last_visit" />
 				</xpath>
 				<xpath expr="/form/sheet/notebook/page[@string='Contacts']" position="attributes">
 					<attribute name="invisible">True</attribute>
@@ -20,6 +21,12 @@
 					<page string="Historico">
 						<field name="history" />
 					</page>
+				</xpath>
+				<xpath expr="//div[@name='buttons']" position="inside">
+					<button name="confirm_visit" type="object"
+						string="Confirmar visita"
+						attrs= "{'invisible': [('customer', '=', False)]}"
+						groups= "base.group_sale_salesman" />
 				</xpath>
 			</field>
 		</record>

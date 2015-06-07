@@ -8,7 +8,7 @@
 			<field name="inherit_id" ref="l10n_br_base.view_l10n_br_base_partner_tree"/>
 			<field name="arch" type="xml">
 				<xpath expr="/tree[@string='Contacts']" position="attributes">
-					<attribute name="colors">green:orders_2days>0;red:orders_2days==0</attribute>
+					<attribute name="colors">green:orders_2days>0;blue:last_visit_today;red:orders_2days==0</attribute>
 				</xpath>
 				<field name="name" position="before">
 					<!--field name="visit_order" /-->
@@ -29,6 +29,7 @@
 					<field name="orders_15days"/>
 					<field name="orders_30days"/>
 					<field name="orders_90days"/>
+					<field name="last_visit_today" />
 				</field>
 			</field>
 		</record>

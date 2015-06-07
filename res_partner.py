@@ -1,10 +1,15 @@
 from openerp.osv import fields, osv
+from openerp import SUPERUSER_ID
 import datetime
 
 class res_partner(osv.osv):
 	_inherit = "res.partner"
 	_order = "visit_order"
 	
+	def confirm_visit(self, cr, uid, ids, context=None):
+		self.write(cr, SUPERUSER_ID, ids, {'last_visit':datetime.datetime.now()})
+		return True	
+
 	def payment_term_func(self, cr, uid, ids, field_name, field_value, arg, context=None):
 		records = self.browse(cr, uid, ids)
 		result = {}
@@ -17,7 +22,10 @@ class res_partner(osv.osv):
 		records = self.browse(cr, uid, ids)
 	        result = {}
         	for r in records:
-            		result[r.id] =  r.last_visit > today.isoformat()
+			if (r.last_visit):
+            			result[r.id] =  r.last_visit > today.isoformat()
+			else:
+				result[r.id] = False
 
 	        return result
 
@@ -91,8 +99,9 @@ class res_partner(osv.osv):
 		'orders_90days': fields.function( total_orders_90days, type='float', method=True, string="90 dias"),
 		'visit_order': fields.integer('Ordem'),
 		'history': fields.text('Historico'),
-		'paym_term': fields.function( payment_term_func, type='char', method=True, string="Metod. de Pagto")
-		
+		'paym_term': fields.function( payment_term_func, type='char', method=True, string="Metod. de Pagto"),
+		'last_visit': fields.datetime('Ultima Visita'),
+		'last_visit_today': fields.function(last_visit_today, type='boolean', method=True, string="Visitado hoje")
 	}
 
 res_partner()
